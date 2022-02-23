@@ -17,6 +17,3 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-// $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email AND status=:status');
-// $stmt->execute(['email' => $email, 'status' => $status]);
-// $user = $stmt->fetch();
