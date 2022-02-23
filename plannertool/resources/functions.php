@@ -52,3 +52,33 @@ if (isset($_POST['deleteItem'])){
     $stmt->execute([$itemId]);
 
 }
+
+if (isset($_POST['editList'])){
+
+    $itemId = $_POST['itemId'];
+    $itemName = $_POST['itemName'];
+   
+    $stmt = $pdo->prepare("UPDATE `list` SET `name` = ? WHERE `list`.`id` = ?; ");
+    $stmt->execute([$itemName, $itemId]);
+
+}
+
+
+if (isset($_POST['deleteList'])){
+
+    $itemId = $_POST['itemId'];
+
+    $stmt = $pdo->prepare("DELETE FROM `list` WHERE `list`.`id` = ?");
+    $stmt->execute([$itemId]);
+
+}
+
+if (isset($_POST['makeList'])){
+
+    $itemName = $_POST['itemName'];
+   
+
+    $stmt = $pdo->prepare("INSERT INTO `list` (`id`, `name`) VALUES (NULL, ?);");
+    $stmt->execute([$itemName]);
+
+}
