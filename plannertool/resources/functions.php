@@ -17,3 +17,38 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
+if (isset($_POST['editItem'])){
+
+    $itemId = $_POST['itemId'];
+    $itemStatus = $_POST['itemStatus'];
+    $itemName = $_POST['itemName'];
+    $itemPriority = $_POST['itemPriority'];
+    $itemDuration = $_POST['itemDuration'];
+    $itemContent = $_POST['itemContent'];
+
+    $stmt = $pdo->prepare("UPDATE `listitem` SET `name` = ?, `content` = ?, `priority` = ?, `status` = ?, `duration` = ? WHERE `listitem`.`id` = ?; ");
+    $stmt->execute([$itemName, $itemContent, $itemPriority, $itemStatus, $itemDuration, $itemId]);
+
+}
+
+if (isset($_POST['newItem'])){
+
+    $listId = $_POST['listId'];
+    $itemName = $_POST['itemName'];
+    $itemPriority = $_POST['itemPriority'];
+    $itemDuration = $_POST['itemDuration'];
+    $itemContent = $_POST['itemContent'];
+
+    $stmt = $pdo->prepare("INSERT INTO `listitem` (`id`, `listId`, `name`, `content`, `priority`, `status`, `duration`) VALUES (NULL, ?, ?, ?, ?, 1, ?);");
+    $stmt->execute([$listId, $itemName, $itemContent, $itemPriority, $itemDuration]);
+
+}
+
+if (isset($_POST['deleteItem'])){
+
+    $itemId = $_POST['itemId'];
+
+    $stmt = $pdo->prepare("DELETE FROM `listitem` WHERE `listitem`.`id` = ?");
+    $stmt->execute([$itemId]);
+
+}
