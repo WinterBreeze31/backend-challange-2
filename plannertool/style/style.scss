@@ -5,15 +5,23 @@
     .item{
         flex-grow: 1;
         width: 100%;
+        
     }
 }
 
 .listcard_flex{
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns:  repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+
+gap: 2.5vw;
 }
 
 .w3-card-4{
-    height: fit-content!important;
+    flex-grow: 1;
+    width: 20vw;
+}
+
+*{
+    word-break: break-all;
+    white-space: normal;
 }

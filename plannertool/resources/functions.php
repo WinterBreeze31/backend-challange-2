@@ -19,7 +19,7 @@ try {
 
 function clean($data)
 {
-    $data = preg_replace('/[^A-Za-z0-9]/', '', $data);
+    $data = preg_replace('@[^A-Za-z0-9\w\ ]@', '', $data);
     $data = htmlspecialchars($data);
     $data = stripslashes($data);
     $data = trim($data);

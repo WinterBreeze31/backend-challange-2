@@ -221,20 +221,22 @@ $list = $pdo->query('SELECT * FROM `list`');
 
             }
 
-            if (filter == "status") {
-                sortItems.sort(function(a, b) {
-                    return a[1] + b[1];
-                });
-            } else {
-                sortItems.sort(function(a, b) {
+            sortItems.sort(function(a, b) {
                     return a[1] - b[1];
                 });
-            }
-            for (let i = 0; i < sortItems.length; i++) {
+
+
+
+            
+            
+                for (let i = 0; i < sortItems.length; i++) {
                 console.log(sortItems[i][0]);
                 document.getElementById(sortItems[i][0]).style.order = i;
+                }
+            
+           
             }
-        }
+        
     </script>
 </body>
 
