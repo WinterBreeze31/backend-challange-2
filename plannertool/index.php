@@ -72,13 +72,14 @@ $list = $pdo->query('SELECT * FROM `list`');
                                 <p><?php echo $val1['content']; ?></p>
                                 <span class="w3-tag w3-blue">Priority: <?php echo $val1['priority']; ?></span>
                                 <span class="w3-tag w3-grey">duration: <?php echo $val1['duration']; ?>min</span>
-                                <br>
+                                
                                 <span class="w3-tag w3-orange"><?php if ($val1['status']) {
                                                                     echo "active";
                                                                 } else {
                                                                     echo "inactive";
                                                                 } ?></span>
-                                <span class="w3-tag w3-yellow" onclick="modal('modalItem<?php echo $val1['id'] ?>', 'open')">
+                                                                <br>	
+                                <span class="w3-btn w3-yellow" onclick="modal('modalItem<?php echo $val1['id'] ?>', 'open')">
                                     Edit list item <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </span>
                             </div>
