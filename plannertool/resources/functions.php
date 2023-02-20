@@ -27,14 +27,27 @@ function clean($data)
     return $data;
 }
 
-
+if (isset($_POST['listId'])){
     $listId = clean($_POST['listId']);
+}
+if (isset($_POST['itemId'])){
     $itemId = clean($_POST['itemId']);
+}
+if (isset($_POST['itemStatus'])){
     $itemStatus = clean($_POST['itemStatus']);
+}
+if (isset($_POST['itemName'])){
     $itemName = clean($_POST['itemName']);
+}
+if (isset($_POST['itemPriority'])){
     $itemPriority = clean($_POST['itemPriority']);
+}
+if (isset($_POST['itemDuration'])){
     $itemDuration = clean($_POST['itemDuration']);
+}
+if (isset($_POST['itemContent'])){
     $itemContent = clean($_POST['itemContent']);
+}
     
         
   
