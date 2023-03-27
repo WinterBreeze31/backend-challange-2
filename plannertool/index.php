@@ -227,7 +227,7 @@ $list = $pdo->query('SELECT * FROM `list`');
                 });
 
 
-
+                // functie om laten draaien voor tijd sortering
             
             
                 for (let i = 0; i < sortItems.length; i++) {
@@ -238,6 +238,9 @@ $list = $pdo->query('SELECT * FROM `list`');
            
             }
         
+           // functie die status op display none zet
+
+            
     </script>
 </body>
 
