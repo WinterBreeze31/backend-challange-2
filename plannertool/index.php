@@ -58,7 +58,7 @@ $list = $pdo->query('SELECT * FROM `list`');
                             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                         </button>
                     </header>
-                    <div class="w3-container flex-container" id="listContainer<?php echo $val['id']; ?>">
+                    <div class="w3-container flex-container" data-order="1" data-filter="1" id="listContainer<?php echo $val['id']; ?>">
                         <?php
 
                         $stmt = $pdo->prepare('SELECT * FROM listitem WHERE listId = ?');
@@ -203,6 +203,7 @@ $list = $pdo->query('SELECT * FROM `list`');
 
         function sortList(list, filter) {
             var listItems = document.querySelectorAll("[data-listID='" + list + "']");
+            var listID = document.getElementById("listContainer" + list);
             var sortItems = [];
             for (let val of listItems) {
                 var currentIdName = val.id;
@@ -222,9 +223,19 @@ $list = $pdo->query('SELECT * FROM `list`');
 
             }
 
+            if (listID.dataset.order == 1){
             sortItems.sort(function(a, b) {
                     return a[1] - b[1];
                 });
+                listID.dataset.order = 0;
+            } else {
+                sortItems.sort(function(a, b) {
+                    return b[1] - a[1];
+                });
+                listID.dataset.order = 1;
+            }
+
+            
 
 
                 // functie om laten draaien voor tijd sortering
@@ -235,7 +246,23 @@ $list = $pdo->query('SELECT * FROM `list`');
                 document.getElementById(sortItems[i][0]).style.order = i;
                 }
             
-           
+                if (filter == "status"){
+                if (listID.dataset.filter == 1){
+                    listID.dataset.filter = 0;
+                    for (let val of listItems) {
+                        if (val.dataset.status == "0"){
+                            val.style.display = 'none';
+                        }
+                    }
+                }
+                else {
+                    listID.dataset.filter = 1;
+                    for (let val of listItems) {
+                            val.style.display = 'block';
+                    }
+                }
+            }
+
             }
         
            // functie die status op display none zet
